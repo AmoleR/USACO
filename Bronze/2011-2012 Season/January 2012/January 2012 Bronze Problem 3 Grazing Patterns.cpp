@@ -29,7 +29,7 @@ int selfNonIntersectingWalks(int start1, int start2, int remaining) {
 		return 0;
 	}
 
-	//If we are at (5, 5), return 1 only if there are no remaining squares
+	//If we are at (5, 5), return 1 only if there are no remaining squares other than (5, 5)
 	if (start1 == 4 && start2 == 4) {
 		if (remaining == 1) {
 			return 1;
