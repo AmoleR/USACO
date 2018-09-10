@@ -18,7 +18,7 @@ using namespace std;
 int N;                  //Number of Cows
 int B;                  //Total Budget
 int costs[1000][2];     //Array of Gift and Shipping Costs
-int sum;                //Sum of Different Cow's Costs (Used at End)
+int difference;         //Difference Between Budget and Different Cow's Costs (Used at End)
 int almostAnswer;       //Index of "Failed" Sum
 
 //Swapping Function for quicksort; given 2 indeces in 0 <= i, j < N, swap them
@@ -103,7 +103,7 @@ int main() {
 	//We test all values after our breaking point
 	for (int i = almostAnswer; i < N; i++) {
 		//If applying the coupon keeps it below the budget
-		if (B - sum - costs[i][0] / 2 - costs[i][1] >= 0) {
+		if (difference - costs[i][0] / 2 - costs[i][1] >= 0) {
 
 			//Add 1 and print the answer
 			cout << almostAnswer + 1;
