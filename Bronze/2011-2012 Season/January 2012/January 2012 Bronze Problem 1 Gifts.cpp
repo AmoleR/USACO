@@ -82,57 +82,43 @@ int main() {
 	//Sorts the array as described
 	quickSort(0, N - 1);
 
-	//If we can not buy a single gift
-	if (costs[0][0] / 2 + costs[0][1] > B) {
-		cout << 0;
-	}
+	//Reset the sum counter
+	difference = B;
 
-	//If we can only buy 1 gift using coupon
-	else if (costs[0][0] + costs[0][1] > B) {
-		cout << 1;
-	}
+	for (int i = 0; i < N; i++) {
 
-	else {
+		//If the current difference is negative, we know we have a "critical point"
+		if (difference - costs[i][0] - costs[i][1] < 0) {
+			//The number of cows (excluding the coupon) is stored in almostAnswer
+			almostAnswer = i;
 
-		//Reset the sum counter
-		sum = 0;
-
-		for (int i = 0; i < N; i++) {
-
-			//The sum so far is the sum of all the costs up to the ith index
-			sum += costs[i][0] + costs[i][1];
-
-			//If the current sum exceeds the budget, we know we have a "critical point"
-			if (sum + costs[i + 1][0] + costs[i + 1][1] > B) {
-				//The number of cows (excluding the coupon) is stored in almostAnswer
-				almostAnswer = i + 1;
-
-				//Break the loop
-				break;
-			}
+			//Break the loop
+			break;
 		}
 
+		//The difference minus the new costs
+		difference -= costs[i][0] + costs[i][1];
+	}
 
-		//We test all values after our breaking point
-		for (int i = almostAnswer; i < N; i++) {
-			//If applying the coupon keeps it below the budget
-			if (B - sum - costs[i][0] / 2 - costs[i][1] >= 0) {
+	//We test all values after our breaking point
+	for (int i = almostAnswer; i < N; i++) {
+		//If applying the coupon keeps it below the budget
+		if (B - sum - costs[i][0] / 2 - costs[i][1] >= 0) {
 
-				//Add 1 and print the answer
-				cout << almostAnswer + 1;
+			//Add 1 and print the answer
+			cout << almostAnswer + 1;
 
-				//Terminate the loop
-				break;
-			}
+			//Terminate the loop
+			break;
+		}
 
-			//If we have exhausted all of our options
-			else if (i == N - 1) {
-				//Write our answer
-				cout << almostAnswer;
+		//If we have exhausted all of our options
+		else if (i == N - 1) {
+			//Write our answer
+			cout << almostAnswer;
 
-				//Break the loop in case
-				break;
-			}
+			//Break the loop in case
+			break;
 		}
 	}
 }
