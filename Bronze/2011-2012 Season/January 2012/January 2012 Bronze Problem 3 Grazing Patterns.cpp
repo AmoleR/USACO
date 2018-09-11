@@ -20,7 +20,7 @@ int K;                  //Number of Illegal Positions
 bool grassArea[5][5];	//Total Grass Area
 
 //Create a function to recursively count self-nonintersecting walks on this 5x5 board
-int selfNonIntersectingWalks(int start1, int start2) {
+int selfNonIntersectingWalks(int start1, int start2, int K2) {
 	//Variable to return
 	int count;
 
@@ -31,7 +31,7 @@ int selfNonIntersectingWalks(int start1, int start2) {
 
 	//If we are at (5, 5), return 1 only if there are no remaining squares
 	if (start1 == 4 && start2 == 4) {
-		if (K == 24) {
+		if (K2 == 24) {
 			return 1;
 		}
 		return 0;
@@ -46,18 +46,15 @@ int selfNonIntersectingWalks(int start1, int start2) {
 	grassArea[start1][start2] = true;
 
 	//We increment the number of barren lands by 1
-	K++;
+	K2++;
 
 	//Otherwise, we have satisfied all conditions so far. Now, what we need to do is to do the recursion.
 
 	//We do the recursive sum
-	count = selfNonIntersectingWalks(start1 - 1, start2) + selfNonIntersectingWalks(start1 + 1, start2) + selfNonIntersectingWalks(start1, start2 - 1) + selfNonIntersectingWalks(start1, start2 + 1);
+	count = selfNonIntersectingWalks(start1 - 1, start2, K2) + selfNonIntersectingWalks(start1 + 1, start2, K2) + selfNonIntersectingWalks(start1, start2 - 1, K2) + selfNonIntersectingWalks(start1, start2 + 1, K2);
 
 	//Reset back to normal square
 	grassArea[start1][start2] = false;
-
-	//We decrease the number of barren lands by 1
-	K--;
 
 	//Return the value
 	return count;
@@ -85,5 +82,5 @@ int main() {
 	}
 
 	//Print a self-nonintersecting walk from (1,  1) to (5, 5)
-	cout << selfNonIntersectingWalks(0, 0);
+	cout << selfNonIntersectingWalks(0, 0 , K);
 }
