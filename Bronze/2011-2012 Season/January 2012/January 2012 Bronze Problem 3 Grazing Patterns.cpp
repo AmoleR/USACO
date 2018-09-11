@@ -57,7 +57,7 @@ int selfNonIntersectingWalks(int start1, int start2) {
 	grassArea[start1][start2] = false;
 
 	//We decrease the number of barren lands by 1
-	K++;
+	K--;
 
 	//Return the value
 	return count;
