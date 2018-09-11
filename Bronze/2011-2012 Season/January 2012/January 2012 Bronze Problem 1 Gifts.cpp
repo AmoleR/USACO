@@ -13,18 +13,17 @@
 using namespace std;
 
 struct cost {
-	int gift, shipping;
+	float gift, shipping;
 };
 
 int N;                  //Number of Cows
 int B;                  //Total Budget
 cost costs[1000];		//Array of Gift and Shipping Costs
-int difference;         //Difference Between Budget and Different Cow's Costs (Used at End)
 int almostAnswer;       //Index of "Failed" Sum
 
 //Comparison for gifts
 bool comparisonInterval(cost i, cost j) {
-	
+
 	//If the total cost is less or equal but have a less than or equal to gift value
 	if (i.gift + i.shipping < j.gift + j.shipping || (i.gift + i.shipping == j.gift + j.shipping && i.gift <= j.gift))
 		return true;
@@ -34,6 +33,9 @@ bool comparisonInterval(cost i, cost j) {
 int main() {
 	//Input N and B
 	cin >> N >> B;
+
+	//Difference Between Budget and Different Cow's Costs (Used at End)
+	float difference;
 
 	for (int i = 0; i < N; i++) {
 		//Input the ith value of costs
