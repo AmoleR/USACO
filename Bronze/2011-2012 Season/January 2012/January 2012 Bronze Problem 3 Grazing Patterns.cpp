@@ -28,25 +28,25 @@ int selfNonIntersectingWalks(int start1, int start2) {
 	if (0 > start1 || 4 < start1 || 0 > start2 || 4 < start2) {
 		return 0;
 	}
-	
-	//First, we put this square we are on as barren
-	grassArea[start1][start2] = true;
-	
-	//We increment the number of barren lands by 1
-	K++;
 
 	//If we are at (5, 5), return 1 only if there are no remaining squares
 	if (start1 == 4 && start2 == 4) {
-		if (K == 25) {
+		if (K == 24) {
 			return 1;
 		}
 		return 0;
 	}
 
 	//Make sure we are not on a barren square
-	if (grassArea[start1][start2] == 1) {
+	if (grassArea[start1][start2] == true) {
 		return 0;
 	}
+
+	//First, we put this square we are on as barren
+	grassArea[start1][start2] = true;
+
+	//We increment the number of barren lands by 1
+	K++;
 
 	//Otherwise, we have satisfied all conditions so far. Now, what we need to do is to do the recursion.
 
@@ -55,7 +55,7 @@ int selfNonIntersectingWalks(int start1, int start2) {
 
 	//Reset back to normal square
 	grassArea[start1][start2] = false;
-	
+
 	//We decrease the number of barren lands by 1
 	K++;
 
