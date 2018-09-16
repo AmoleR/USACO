@@ -3,14 +3,14 @@
 	* We start by inputing K
 	* We then set all values of the grassArea array as false; meaning they have grass
 	* We then call selfNonIntersectingWalks, which:
-		* Is a recursive sequence based on 2 starting coordinates and the number of remaining grass
+		* Is a recursive sequence based on 2 starting coordinates and the number of barren grass
 		* We define a variable to return
-		* If we are out of bounds or at (5, 5) but have > 1 remaining square, we return 0
-		* If we are at (5, 5) but have only 1 remaining square, we return 1
-		* If we are on a barren square, we return 1
+		* If we are out of bounds or at (5, 5) but have < 24 barren squares, we return 0
+		* If we are at (5, 5) but have 24 barren squares, we return 1
+		* If we are on a barren square, we return 0
 		* Otherwise, it is the sum of the 4 other directions we can go
 		* Return our count
-	* We print our answer, selfNonIntersectingWalks(0, 0, (25 - K)), which is the number of self-nonintersecting walks from (1, 1) with (25 - K) non-barren squares
+	* We print our answer, selfNonIntersectingWalks(0, 0, K), which is the number of self-nonintersecting walks from (1, 1) with K barren squares
 */
 
 #include <iostream>
