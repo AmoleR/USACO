@@ -1,4 +1,4 @@
-//USACO Bronze Division 2013 February Problem 2 Cow Crossings
+//USACO Bronze Division 2013 February Problem 3 Perimeter
 /* How the program works:
 	* We input N and a and b for each cow and store it in N and set occupied[a][b] to true
 	* We have a recursive function that requires 2 integers, i and j:
