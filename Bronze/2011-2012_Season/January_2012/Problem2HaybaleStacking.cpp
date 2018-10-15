@@ -10,8 +10,8 @@
 	* Find the middle number
 */
 
-#include <iostream>
 #include <algorithm>
+#include <fstream>
 using namespace std;
 
 int N;							//Number of Stacks
@@ -20,8 +20,13 @@ int differencesArray[1000001];	//Array of differences
 int finalArray[1000000];		//Final Haybale Array
 
 int main() {
+
+	//Start the streams
+	ifstream inputFile("stacking.in");
+	ofstream outputFile("stacking.out");
+
 	//Input N and K
-	cin >> N >> K;
+	inputFile >> N >> K;
 
 	//Clear value of differencesArray
 	for (int i = 0; i <= N; i++) {
@@ -52,5 +57,5 @@ int main() {
 	sort(finalArray, finalArray + N);
 
 	//Print out median
-	cout << finalArray[(N - 1) / 2];
+	outputFile << finalArray[(N - 1) / 2];
 }

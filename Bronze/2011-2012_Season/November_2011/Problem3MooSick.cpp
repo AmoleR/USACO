@@ -15,12 +15,12 @@
 		* Output each of the ruminantChords
 */
 
-#include <iostream>
+#include <fstream>
 #include <algorithm>
 using namespace std;
 
 int N;								//The number of notes
-int notes[1000];					//The array of notes	
+int notes[1000];					//The array of notes
 int C;								//The number of notes in the ruminant seventh chord
 int ruminantSeventh[10];			//The array of notes in the ruminant seventh chord
 int possibleRuminant[10];			//The list of the possibly ruminant chords, each selected from notes[]
@@ -41,19 +41,23 @@ bool equalArray(int a[], int b[], int length) {
 
 int main() {
 
+	//Start the streams
+	ifstream inputFile("moosick.in");
+	ofstream outputFile("moosick.out");
+
 	//Import N
-	cin >> N;
+	inputFile >> N;
 
 	//Import the notes
 	for (int i = 0; i < N; i++)
-		cin >> notes[i];
+		inputFile >> notes[i];
 
 	//Import C
-	cin >> C;
+	inputFile >> C;
 
 	//Import the notes in the ruminantSeventh
 	for (int i = 0; i < C; i++)
-		cin >> ruminantSeventh[i];
+		inputFile >> ruminantSeventh[i];
 
 	//Sort so we don't worry about reordering
 	sort(ruminantSeventh, ruminantSeventh + C);
@@ -90,9 +94,9 @@ int main() {
 	}
 
 	//Output the lastIndex
-	cout << lastIndex << endl;
+	outputFile << lastIndex << endl;
 
 	//Output each of the ruminantChords
 	for (int i = 0; i < lastIndex; i++)
-		cout << ruminantChords[i] << endl;
+		outputFile << ruminantChords[i] << endl;
 }

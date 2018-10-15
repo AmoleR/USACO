@@ -11,7 +11,7 @@
 	* Use this function on the imported values of days, hours, and minutes
 */
 
-#include <iostream>
+#include <fstream>
 using namespace std;
 
 int D;		//Number of Days
@@ -34,9 +34,13 @@ int timeSinceStart(int day, int hour, int minute) {
 
 int main() {
 
+	//Start the streams
+	ifstream inputFile("ctiming.in");
+	ofstream ouputFile("ctiming.out");
+
 	//Input D, H, and M
-	cin >> D >> H >> M;
+	inputFile >> D >> H >> M;
 
 	//Print out the time since November 11 at 11:11 AM using our function
-	cout << timeSinceStart(D, H, M);
+	ouputFile << timeSinceStart(D, H, M);
 }

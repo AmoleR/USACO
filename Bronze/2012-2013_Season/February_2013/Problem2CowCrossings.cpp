@@ -14,7 +14,7 @@
 	* Output the answer
 */
 
-#include <iostream>
+#include <fstream>
 #include <algorithm>
 using namespace std;
 
@@ -45,14 +45,18 @@ bool compareIntervalB(cow i, cow j) {
 }
 
 int main() {
-	
+
+	//Start the streams
+	ifstream inputFile("crossings.in");
+	ofstream outputFile("crossings.out");
+
 	//Input N
-	cin >> N;
+	inputFile >> N;
 
 	for (int i = 0; i < N; i++) {
 
 		//Input each value of the crossing
-		cin >> crossings[i].a >> crossings[i].b;
+		inputFile >> crossings[i].a >> crossings[i].b;
 	}
 
 	//Sort based on highest a
@@ -77,7 +81,7 @@ int main() {
 		//Find the larger of the two values
 		largestIndex = max(largestIndex, crossings[i].index);
 	}
-	
+
 	//Output the answer
-	cout << answer;
+	outputFile << answer;
 }

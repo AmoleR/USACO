@@ -10,7 +10,7 @@
 	* Output the perimeter
 */
 
-#include <iostream>
+#include <fstream>
 #include <algorithm>
 using namespace std;
 
@@ -63,8 +63,12 @@ void goToHaybale(int i, int j) {
 
 int main() {
 
+	//Start the streams
+	ifstream inputFile("perimeter.in");
+	ofstream outputFile("perimeter.out");
+
 	//Input N
-	cin >> N;
+	inputFile >> N;
 
 	//Create dummy variables a and b
 	int a = 0;
@@ -72,7 +76,7 @@ int main() {
 
 	for (int i = 0; i < N; i++) {
 		//Import a and b and set that square as true
-		cin >> a >> b;
+		inputFile >> a >> b;
 		occupied[a][b] = true;
 	}
 
@@ -80,5 +84,5 @@ int main() {
 	goToHaybale(0, 0);
 
 	//Output the perimeter
-	cout << perimeter;
+	outputFile << perimeter;
 }

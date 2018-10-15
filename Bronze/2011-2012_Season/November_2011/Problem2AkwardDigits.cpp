@@ -21,7 +21,7 @@
 	* We check the values to find the answer
 */
 
-#include <iostream>
+#include <fstream>
 #include <string.h>
 using namespace std;
 
@@ -76,9 +76,13 @@ int checkValues() {
 
 int main() {
 
+	//Start the streams
+	ifstream inputFile("digits.in");
+	ofstream outputFile("digits.out")
+
 	//Input the base2 and base3 character arrays
-	cin >> base2 >> base3;
+	inputFile >> base2 >> base3;
 
 	//Output the answer
-	cout << checkValues();
+	outputFile << checkValues();
 }

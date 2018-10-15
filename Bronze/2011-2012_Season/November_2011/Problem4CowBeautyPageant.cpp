@@ -22,7 +22,7 @@
 	* Then, we output the answer given by the recursiveFloodFill
 */
 
-#include <iostream>
+#include <fstream>
 using namespace std;
 
 int N;						//Number of Rows
@@ -77,7 +77,7 @@ void addNumbers(int c, int d) {
 
 		//If this is a 2
 		else if (cowhide[c][d] == 2) {
-			
+
 			//Say the point is visited
 			visited[c][d] = true;
 
@@ -117,7 +117,7 @@ int recursiveFloodFill() {
 
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < M; j++) {
-			
+
 			//If we have a 2 next to a 1, return 1
 			if (cowhide[i][j] == 2) {
 				if (cowhide[i - 1][j] == 1 || cowhide[i + 1][j] == 1 || cowhide[i][j - 1] == 1 || cowhide[i][j + 1] == 1) {
@@ -133,8 +133,12 @@ int recursiveFloodFill() {
 
 int main() {
 
+	//Start the streams
+	ifstream inputFile("pageant.in");
+	ofstream outputFile("pageant.out");
+
 	//Import N and M
-	cin >> N >> M;
+	inputFile >> N >> M;
 
 	//Initialize a character array
 	char a[50];
@@ -142,7 +146,7 @@ int main() {
 	for (int i = 0; i < N; i++) {
 
 		//Import the string into the character array
-		cin >> a;
+		inputFile >> a;
 		for (int j = 0; j < M; j++) {
 
 			//If we have an X, set it as a 1
@@ -154,7 +158,7 @@ int main() {
 				cowhide[i][j] = 0;
 		}
 	}
-	
+
 	//By looping through the entire grid, find where we have a 1
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < M; j++) {
@@ -176,5 +180,5 @@ int main() {
 	doChange(twoPatternX, twoPatternY);
 
 	//Print out the answer from our recursive function
-	cout << recursiveFloodFill();
+	outputFile << recursiveFloodFill();
 }

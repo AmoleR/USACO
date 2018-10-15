@@ -11,19 +11,19 @@
 	* If not, we output almostAnswer
 */
 
-#include <iostream>
 #include <algorithm>
+#include <fstream>
 using namespace std;
 
 struct cost {
 	int gift, shipping;
 };
 
-int N;                  //Number of Cows
-int B;                  //Total Budget
+int N;                 //Number of Cows
+int B;                 //Total Budget
 cost costs[1000];		//Array of Gift and Shipping Costs
-int difference;			//Difference Between Budget and Different Cow's Costs (Used at End)
-int almostAnswer;       //Index of "Failed" Sum
+int difference;		//Difference Between Budget and Different Cow's Costs (Used at End)
+int almostAnswer;      //Index of "Failed" Sum
 
 //Comparison for gifts
 bool comparisonInterval(cost i, cost j) {
@@ -35,12 +35,17 @@ bool comparisonInterval(cost i, cost j) {
 }
 
 int main() {
+
+	//Start the streams
+	ifstream inputFile("gifts.in");
+	ofstream outputFile("gifts.out");
+
 	//Input N and B
-	cin >> N >> B;
+	inputFile >> N >> B;
 
 	for (int i = 0; i < N; i++) {
 		//Input the ith value of costs
-		cin >> costs[i].gift >> costs[i].shipping;
+		inputFile >> costs[i].gift >> costs[i].shipping;
 	}
 
 	//Sorts the array as described
@@ -75,7 +80,7 @@ int main() {
 	for (int i = almostAnswer; i < N; i++) {
 		//If applying the coupon keeps it below the budget
 		if (difference - costs[i].gift / 2 - costs[i].shipping >= 0) {
-			
+
 			//Add 1 to the answer
 			almostAnswer ++;
 
@@ -93,7 +98,7 @@ int main() {
 			break;
 		}
 	}
-	
+
 	//Print the answer
-	cout << almostAnswer;
+	outputFile << almostAnswer;
 }

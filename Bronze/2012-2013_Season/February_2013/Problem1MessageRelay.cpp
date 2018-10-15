@@ -8,7 +8,7 @@
 	* Output the answer
 */
 
-#include <iostream>;
+#include <fstream>;
 using namespace std;
 
 int N;						//The number of cows
@@ -33,18 +33,23 @@ void findNonLoopy(int value) {
 }
 
 int main() {
+
+	//Start the streams
+	ifstream inputFile("relay.in");
+	ofstream outputFile("relay.out");
+
 	//Input N
 	cin >> N;
 
 	for (int i = 0; i < N; i++) {
 
 		//Input each cow's pointer
-		cin >> pointerArray[i];
+		inputFile >> pointerArray[i];
 	}
 
 	//Find the number of non-loopy cows
 	findNonLoopy(0);
 
 	//Output the answer
-	cout << answer;
+	outputFile << answer;
 }
