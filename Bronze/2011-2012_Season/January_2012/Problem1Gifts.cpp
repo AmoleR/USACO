@@ -19,11 +19,11 @@ struct cost {
 	int gift, shipping;
 };
 
-int N;                 //Number of Cows
-int B;                 //Total Budget
-cost costs[1000];		//Array of Gift and Shipping Costs
-int difference;		//Difference Between Budget and Different Cow's Costs (Used at End)
-int almostAnswer;      //Index of "Failed" Sum
+int N;                //Number of Cows
+int B;                //Total Budget
+cost costs[1000];			//Array of Gift and Shipping Costs
+int difference;				//Difference Between Budget and Different Cow's Costs (Used at End)
+int almostAnswer;     //Index of "Failed" Sum
 
 //Comparison for gifts
 bool comparisonInterval(cost i, cost j) {
